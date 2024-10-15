@@ -2,7 +2,6 @@ use actix_web::{web, HttpResponse};
 use chrono::Utc;
 use sqlx::PgPool;
 use tracing::Instrument;
-use tracing_log::LogTracer;
 use uuid::Uuid;
 
 #[derive(serde::Deserialize)]
@@ -12,8 +11,6 @@ pub struct FormData {
 }
 
 pub async fn subscribe(form: web::Form<FormData>, pool: web::Data<PgPool>) -> HttpResponse {
-    LogTracer::init().expect("failed to set logger");
-
     let request_id = Uuid::new_v4();
     let request_span = tracing::info_span!(
         "Adding '{}' '{}' as a new subscriber",

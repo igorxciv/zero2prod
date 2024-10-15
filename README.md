@@ -10,6 +10,8 @@
 
 `cargo +nightly rustc --profile=check -- -Zunpretty=expanded`
 
+`cargo test -- --nocapture` - skip println
+
 https://github.com/LukeMathWalker/zero-to-production/tree/root-chapter-03-part0/.github/workflows
 
 
